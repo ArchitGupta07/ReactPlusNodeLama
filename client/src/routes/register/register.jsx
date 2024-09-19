@@ -29,11 +29,12 @@ function Register() {
           password,
         }
       );
-      const res = await apiRequest.post("/auth/register", {
-        username,
-        email,
-        password,
-      });
+
+      // const res = await apiRequest.post("/auth/register", {
+      //   username,
+      //   email,
+      //   password,
+      // });
 
       navigate("/login");
     } catch (err) {

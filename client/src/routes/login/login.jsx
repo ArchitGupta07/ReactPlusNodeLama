@@ -8,7 +8,7 @@ function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const {updateUser} = useContext(AuthContext)
+  const { updateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -20,6 +20,7 @@ function Login() {
 
     const username = formData.get("username");
     const password = formData.get("password");
+    console.log("checkkkkkkkkkkkkkkkkkkkkkkkkk", username, password);
 
     try {
       const res = await apiRequest.post("/auth/login", {
@@ -27,10 +28,13 @@ function Login() {
         password,
       });
 
-      updateUser(res.data)
+      console.log("user got created");
+
+      updateUser(res.data);
 
       navigate("/");
     } catch (err) {
+      // console.log(data);
       setError(err.response.data.message);
     } finally {
       setIsLoading(false);
